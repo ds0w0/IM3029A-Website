@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 標題樣式練習</title>
+    <style>
+        /* 1. 基礎設定：設定背景顏色以凸顯卡片 */
+        body {
+            font-family: "Times New Roman", serif;
+            background-color: #f0f0f0; /* 淺灰色背景，讓白色卡片更明顯 */
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center;    /* 垂直居中（選用） */
+            min-height: 100vh;      /* 確保主體佔滿螢幕高度 */
+            margin: 0;
+        }
+
+        /* 2. 最外面的陰影：建立卡片容器 */
+        .card-container {
+            background-color: white; /* 白色底 */
+            padding: 40px;           /* 內部間距 */
+            width: 80%;              /* 限制寬度 */
+            max-width: 800px;        /* 最大寬度 */
+            /* 實作最外面的柔和陰影：水平0, 垂直10px, 模糊20px, 黑色透明度0.2 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+            border-radius: 8px;      /* 選用：微小圓角讓卡片更精緻 */
+        }
+
+        /* --- 標題樣式 --- */
+
+        /* 1. 帶有上邊框與陰影的 H1 */
+        .h1-style {
+            font-size: 3rem;
+            border-top: 4px solid black;
+            display: inline-block;
+            padding-top: 5px;
+            text-shadow: 3px 3px 2px pink; 
+            margin-bottom: 30px;
+            margin-top: 0; /* 移除預設邊距 */
+        }
+
+        /* 2. 黃色右下有灰色陰影的 H1 (使用 box-shadow) */
+        .h2-style {
+            font-style: italic;
+            border: 1px solid black;     /* 黑色內框 */
+            padding: 5px 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            background-color: white;    /* 確保背景是白的 */
+            
+            /* 實作立體雙重陰影： */
+            /* 陰影1 (第一層): 黃色立體邊框 */
+            /* 陰影2 (第二層): 右下角的灰色立體感 */
+            box-shadow: 
+                0 0 0 2px yellow,      /* 用沒有模糊的黃色陰影模擬外框 */
+                3px 3px 3px gray;     /* 灰色陰影，水平/垂直位移 3px, 模糊 3px */
+        }
+
+        /* 3. 靠右且帶底線的 H3 */
+        .h3-style {
+            text-align: right;
+            text-decoration: underline;
+            font-size: 1.5rem;
+            margin-bottom: 0; /* 移除底部預設邊距 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <h1 class="h1-style">This is heading 1</h1>
+        <h2 class="h2-style">This is heading 2</h2>
+        <h3 class="h3-style">This is heading 3</h3>
+    </div>
+
+</body>
+</html>
