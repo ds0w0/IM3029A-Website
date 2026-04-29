@@ -1,67 +1,68 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>互動式按鈕網頁</title>
+    <title>互動網頁範例</title>
     <style>
-        /* CSS 樣式設定 */
         body {
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #f4f7f6;
         }
 
-        #display-text {
-            font-size: 24px;
+        #status-text {
+            font-size: 2rem;
             font-weight: bold;
             margin-bottom: 20px;
             color: #333;
-            transition: all 0.3s ease; /* 平滑變色效果 */
+            transition: all 0.3s ease; /* 讓顏色切換更平滑 */
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
+        .custom-button {
+            padding: 12px 30px;
+            font-size: 1.2rem;
             cursor: pointer;
-            background-color: #007bff;
-            color: white;
             border: none;
-            border-radius: 5px;
-            transition: background-color 0.2s;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .custom-button:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
-    <div id="display-text">原始內容：請與按鈕互動</div>
-    <button id="interact-btn">把滑鼠移過來！</button>
+    <div id="status-text">滑鼠還沒過來...</div>
+
+    <button id="interactive-btn" class="custom-button">把滑鼠移上來！</button>
 
     <script>
-        const btn = document.getElementById('interact-btn');
-        const text = document.getElementById('display-text');
+        const textElement = document.getElementById('status-text');
+        const button = document.getElementById('interactive-btn');
 
-        // 當滑鼠移入按鈕時
-        btn.addEventListener('mouseover', () => {
-            text.textContent = '滑鼠正在按鈕上！';
-            text.style.color = '#e74c3c'; // 變為紅色
-            text.style.fontSize = '30px'; // 稍微變大
+        // 當滑鼠移入按鈕
+        button.addEventListener('mouseover', () => {
+            textElement.textContent = '哦！你發現我了！';
+            textElement.style.color = '#e91e63'; // 變成粉紅色
+            textElement.style.transform = 'scale(1.1)';
         });
 
-        // 當滑鼠移出按鈕時
-        btn.addEventListener('mouseout', () => {
-            text.textContent = '原始內容：請與按鈕互動';
-            text.style.color = '#333'; // 恢復深灰色
-            text.style.fontSize = '24px'; // 恢復原尺寸
+        // 當滑鼠移出按鈕
+        button.addEventListener('mouseout', () => {
+            textElement.textContent = '滑鼠又走掉了。';
+            textElement.style.color = '#333'; // 變回深灰色
+            textElement.style.transform = 'scale(1.0)';
         });
     </script>
 
