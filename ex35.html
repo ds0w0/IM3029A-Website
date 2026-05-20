@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Object Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>1. All Properties of the Object</h2>
+    <ul id="properties-list"></ul>
+
+    <h2>2. Object After Deleting 'age'</h2>
+    <pre id="output-object"></pre>
+</div>
+
+<script>
+    // Sample object initialization
+    var Person = {
+        firstName : "Tony",
+        lastName : "Lee",
+        age : 50,
+        eyeColor : "Blue"
+    };
+
+    // 1. List all properties of the object
+    const propertiesList = Object.keys(Person);
+    const listElement = document.getElementById("properties-list");
+    
+    propertiesList.forEach(prop => {
+        let li = document.createElement("li");
+        li.textContent = prop;
+        listElement.appendChild(li);
+    });
+
+    // 2. Delete the age property
+    delete Person.age;
+
+    // 3. Print the object after deleting the property
+    document.getElementById("output-object").textContent = JSON.stringify(Person, null, 4);
+</script>
+
+</body>
+</html>
