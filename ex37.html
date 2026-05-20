@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Property Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+        h2 {
+            color: #1a73e8;
+            margin-top: 0;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+        .results {
+            margin-top: 25px;
+            background: #f8fafc;
+            padding: 15px;
+            border-left: 4px solid #1a73e8;
+            border-radius: 4px;
+        }
+        .results p {
+            margin: 8px 0;
+            font-size: 16px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Circle Calculator</h2>
+    <p>Enter a radius below to test the calculation functions.</p>
+    
+    <div class="input-group">
+        <label for="radiusInput">Radius:</label>
+        <input type="number" id="radiusInput" value="5" min="0" step="any">
+    </div>
+    
+    <button onclick="runCalculator()">Calculate Properties</button>
+
+    <div class="results">
+        <p id="circumference-output">The circumference is NN</p>
+        <p id="area-output">The area is NN</p>
+    </div>
+</div>
+
+<script>
+    // 1. Function to calculate and return circumference string
+    function calcCircumfrence(radius) {
+        // Formula: 2 * pi * r
+        const circumference = 2 * Math.PI * radius;
+        // Fixing to 2 decimal places for neat presentation
+        return "The circumference is " + circumference.toFixed(2);
+    }
+
+    // 2. Function to calculate and return area string
+    function calcArea(radius) {
+        // Formula: pi * r^2
+        const area = Math.PI * Math.pow(radius, 2);
+        return "The area is " + area.toFixed(2);
+    }
+
+    // Driver function to process input and demonstrate outputs
+    function runCalculator() {
+        const radius = parseFloat(document.getElementById('radiusInput').value);
+        
+        if (isNaN(radius) || radius < 0) {
+            document.getElementById('circumference-output').textContent = "Invalid radius input.";
+            document.getElementById('area-output').textContent = "";
+            return;
+        }
+
+        // Invoking assignment functions and rendering onto the web page
+        document.getElementById('circumference-output').textContent = calcCircumfrence(radius);
+        document.getElementById('area-output').textContent = calcArea(radius);
+    }
+
+    // Run once on load to show initial defaults
+    runCalculator();
+</script>
+
+</body>
+</html>
